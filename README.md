@@ -44,8 +44,14 @@ Sample output:
 2 failed, 14 passed, 1 ignored
 
 FAILED  parser::tests::rejects_empty_input
+          at src/parser.rs:88:9
+          assertion `left == right` failed
 FAILED  parser::tests::handles_trailing_newline
 ```
+
+The panic location and message are taken from the `---- name stdout ----`
+sections that libtest prints after the run. If a failing test has no such
+section in the log, only its name is shown.
 
 faildigest exits with status 1 if it found any failed tests, and 0
 otherwise, so it can gate a CI step that only has a saved log to work
